@@ -8,13 +8,24 @@ import Rooms from "./pages/Rooms";
 import SingleRoom from "./pages/SingleRoom";
 import Error from "./pages/Error";
 
+//import for router
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+
+//import Navbar
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
     <>
-      <Home />
-      <Rooms />
-      <SingleRoom />
-      <Error />
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/rooms" exact component={Rooms} />
+          <Route path="/rooms/:slug" component={SingleRoom} />
+          <Route component={Error} />
+        </Switch>
+      </Router>
     </>
   );
 }
